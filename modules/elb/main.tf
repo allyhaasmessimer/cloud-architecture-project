@@ -1,6 +1,7 @@
 resource "aws_elb" "web" {
   name               = "terraform-elb"
   availability_zones = var.availability_zones
+  instances          = var.instance_ids
 
   listener {
     instance_port     = 80
@@ -16,8 +17,6 @@ resource "aws_elb" "web" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
   }
-
-  instances = [aws_instance.web.id]
 
   tags = {
     Name = "terraform-elb"
