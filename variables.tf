@@ -66,3 +66,9 @@ variable "availability_zones" {
   type        = list(string)
   default     = ["us-east-1a", "us-east-1b"]  # Replace with your desired availability zones
 }
+
+variable "vpc_id" {
+  description = "The ID of the VPC where the resources will be deployed"
+  type        = string
+  default     = "vpc-02fbad4bc923c0ad0"
+}
