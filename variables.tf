@@ -14,6 +14,9 @@ variable "ami_id" {
   default     = "ami-00beae93a2d981137"  # Amazon Linux 2 AMI for us-east-1
 }
 
+
+
+
 # Define the instance type variable for EC2 instances
 variable "instance_type" {
   description = "The instance type for the EC2 instance"
@@ -27,6 +30,21 @@ variable "bucket_name" {
   type        = string
   default     = "clouddeploy-ahm-20240530"
 }
+
+# Variable for bucket expiry days
+variable "bucket_expiry_days" {
+  description = "Number of days after which the objects in the bucket should expire"
+  type        = number
+  default     = 365  # Default to 1 year
+}
+
+# Variable for transition days
+variable "transition_days" {
+  description = "Number of days after which the objects should be transitioned to Glacier storage class"
+  type        = number
+  default     = 30  # Default to 30 days
+}
+
 
 # Define the database configuration variables for RDS
 variable "db_name" {

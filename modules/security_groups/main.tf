@@ -1,6 +1,6 @@
 # security_groups.tf
 
-resource "aws_security_group" "ec2_security_group" {
+resource "aws_security_group" "ec2" {
   name        = "ec2_security_group"
   description = "Security group for EC2 instances"
   vpc_id      = var.vpc_id

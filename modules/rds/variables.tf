@@ -8,7 +8,7 @@ variable "db_allocated_storage" {
 variable "db_name" {
   description = "The name of the RDS database"
   type        = string
-  default     = "exampledb"
+  default     = "database-1"
 }
 
 variable "db_username" {
@@ -27,5 +27,10 @@ variable "db_password" {
 variable "db_instance_class" {
   description = "The instance class for the RDS database"
   type        = string
-  default     = "db.t2.micro"  # Smallest instance type eligible for Free Tier
+  default     = "db.t3.micro"  # Smallest instance type eligible for Free Tier
+}
+
+variable "rds_security_group_id" {
+  description = "The security group id for the rds instances"
+  type        = string
 }

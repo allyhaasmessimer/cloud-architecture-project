@@ -12,6 +12,8 @@ module "ec2" {
     source = "./modules/ec2" # source points to the relative path of the EC2 module
     ami_id = var.ami_id
     instance_type = var.instance_type
+    ec2_security_group_id = module.security_groups.ec2_security_group_id
+    ec2_security_group_name = module.security_groups.ec2_security_group_name
 }
 
 
@@ -20,12 +22,15 @@ module "ec2" {
 module "s3" {
     source = "./modules/s3" # source points to the relative path of the S3 module
     bucket_name  = var.bucket_name
+    transition_days = var.transition_days
+    bucket_expiry_days = var.bucket_expiry_days
 }
 
 # Module for RDS instance
 # This module will manage the creation and configuration of an RDS database instance.
 module "rds" {
     source = "./modules/rds" # source points to the relative path of the RDS module
+    rds_security_group_id = module.security_groups.rds_security_group_id
 }
 
 # Module for Elastic Load Balancer (ELB)
@@ -39,7 +44,8 @@ module "elb" {
 # Module for Security Groups
 # This module will manage the creation and configuration of security groups.
 module "security_groups" {
-    source = "./security_groups" # source points to the relative path of the security groups
+    source = "./modules/security_groups" # source points to the relative path of the security groups
+    vpc_id = var.vpc_id
 }
 
 # Module for IAM roles and policies
