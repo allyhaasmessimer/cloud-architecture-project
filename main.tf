@@ -3,7 +3,7 @@
 # Define the provider
 # the provider block is used to configure the AWS provider. It specifies the region where resources will be created.
 provider "aws" {
-    region = var.region # The AWS region is set using a variable defined in variables.tf
+    region = var.region
 }
 
 # Module for EC2 instances
@@ -16,14 +16,12 @@ module "ec2" {
     ec2_security_group_name = module.security_groups.ec2_security_group_name
 }
 
-
-# Module for S3 bucket
-# This module will manage the creation and configuration of an S3 bucket.
-module "s3" {
-    source = "./modules/s3" # source points to the relative path of the S3 module
-    bucket_name  = var.bucket_name
-    transition_days = var.transition_days
-    bucket_expiry_days = var.bucket_expiry_days
+# Module for Elastic Load Balancer (ELB)
+# This module will manage the creation and configuration of an ELB.
+module "elb" {
+    source = "./modules/elb"
+    instance_ids = [module.ec2.ec2_instance_id]
+    availability_zones = var.availability_zones
 }
 
 # Module for RDS instance
@@ -33,12 +31,10 @@ module "rds" {
     rds_security_group_id = module.security_groups.rds_security_group_id
 }
 
-# Module for Elastic Load Balancer (ELB)
-# This module will manage the creation and configuration of an ELB.
-module "elb" {
-    source = "./modules/elb"  # Source points to the relative path of the ELB module
-    instance_ids = [module.ec2.ec2_instance_id]
-    availability_zones = var.availability_zones
+# Module for S3 bucket
+# This module will manage the creation and configuration of an S3 bucket.
+module "s3" {
+    source = "./modules/s3" # source points to the relative path of the S3 module
 }
 
 # Module for Security Groups
