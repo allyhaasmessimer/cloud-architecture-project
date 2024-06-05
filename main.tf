@@ -9,10 +9,7 @@ provider "aws" {
 # Module for EC2 instances
 # This module will manage the creation and configuration of EC2 instances.
 module "ec2" {
-    source = "./modules/ec2" # source points to the relative path of the EC2 module
-    ami_id = var.ami_id
-    instance_type = var.instance_type
-    ec2_security_group_id = module.security_groups.ec2_security_group_id
+    source = "./modules/ec2"
     ec2_security_group_name = module.security_groups.ec2_security_group_name
 }
 

@@ -1,7 +1,6 @@
 # Define the S3 bucket
 resource "aws_s3_bucket" "b" {
   bucket = var.bucket_name
-
 }
 
 # Define the S3 bucket lifecycle configuration

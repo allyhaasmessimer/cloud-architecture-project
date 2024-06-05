@@ -7,5 +7,5 @@ variable "instance_ids" {
 variable "availability_zones" {
   description = "The availability zones for the ELB"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]  # Replace with your desired availability zones
+  default     = ["us-east-1a", "us-east-1b"]
 }

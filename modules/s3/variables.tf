@@ -9,12 +9,12 @@ variable "bucket_name" {
 variable "bucket_expiry_days" {
   description = "Number of days after which the objects in the bucket should expire"
   type        = number
-  default     = 365  # Default to 1 year
+  default     = 365
 }
 
 # Variable for transition days
 variable "transition_days" {
   description = "Number of days after which the objects should be transitioned to Glacier storage class"
   type        = number
-  default     = 30  # Default to 30 days
+  default     = 30
 }
