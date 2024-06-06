@@ -71,20 +71,20 @@ The aim of this project is to fuse theoretical cloud architecture planning with 
 ## Usage
 
 1. **Clone the repository**
-   `sh
+   `
 git clone https://github.com/allyhaasmessimer/cloud-architecture-project
 cd cloud-architecture-project
 `
 2. **Initialize Terraform**
-   `sh
+   `
 terraform init
 `
 3. **Preview the infrastructure changes:**
-   `sh
+   `
 terraform plan
 `
 4. **Apply the configuration to deploy resources:**
-   `sh
+   `
 terraform apply
 `
 5. **Verify the deployed resources:**
