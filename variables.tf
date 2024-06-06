@@ -7,9 +7,16 @@ variable "region" {
     default     = "us-east-1"
 }
 
-# Define the AMI ID variable for EC2 instances
-variable "ami_id" {
-  description = "The AMI ID for the EC2 instances"
+# Define the availability zones for the ELB
+variable "availability_zones" {
+  description = "The availability zones for the ELB"
+  type        = list(string)
+  default     = ["us-east-1a", "us-east-1b"]
+}
+
+# Define the VPC ID variable
+variable "vpc_id" {
+  description = "The ID of the VPC where the resources will be deployed"
   type        = string
-  default     = "ami-00beae93a2d981137"  # Amazon Linux 2 AMI for us-east-1
+  default     = "vpc-02fbad4bc923c0ad0"
 }
